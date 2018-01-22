@@ -1,0 +1,13 @@
+/* .canvas {
+    background-color: black;
+} */
+
+.container_one{
+    margin-right: 10px;
+    margin-left: 10px;
+}
+canvas{
+        display: block;
+        margin: auto;
+        align: center; 
+}
