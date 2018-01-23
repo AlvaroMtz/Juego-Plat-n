@@ -1,50 +1,72 @@
-function Elements(x, y, height, width) {
-    this.x = x;
-    this.y = y;
-    this.height = height;
-    this. width = width;
-    this.strength = strength;
-};
-
-Elements.prototype.attack = function(){
-    return this.strength;
+function Player(ctx, canvas){
+    this.x = 20,
+    this.y = 150,   
+    this.vy = 0,
+    this.vx = 0,
+    this.speed = 3, 
+    this.radius = 5,
+    this.color = '#FFcc00',
+    this.orders = [false, false, false], // Evaluo las pulsaciones de tecla
+                                         // [izq,der,arriba]
+    this.friction = 0.8,
+    this.gravity = 0.2;
+    this.ctx = ctx,
+    this.canvas = canvas
 }
-
-//Función constructora de jugadores, falta por incluir el movimiento ¿?
-function Player (health, x, y, height, width){
-    Elements.call (this, x, y, height, width);
-    this.health = health;
-    this.speedX = 0;
-    this.speedY = 0;
-    this.update = function(){
-        ctx = myGameArea.context;
-        ctx.fillStyle = color;
-        ctx.fillRect(this.x, this.y, this.width, this.height);
+        
+Player.prototype.render = function () {
+    this.ctx.beginPath();
+    this.ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, true);
+    this.ctx.closePath();
+    this.ctx.fillStyle = this.color;
+    this.ctx.fill();    
+}     
+        
+Player.prototype.update = function () {
+    this.vx *= this.friction;
+    this.vy += this.gravity;
+    this.x += this.vx;
+    this.y += this.vy;
+ 
+    if (this.x >= this.canvas.width - this.radius) {
+        this.x = this.canvas.width - this.radius;
+    } else if (this.x <= 0) {         
+        this.x = this.radius;     
+    }    
+  
+    if(this.y >= this.canvas.height - this.radius){
+        this.y = this.canvas.height - this.radius;
+        this.jumping = false;
     }
-    this.newPos = function() {
-        this.x += this.speedX;
-        this.y += this.speedY;
+}
+
+Player.prototype.moveLeft = function () {
+    console.log(this.vx > -this.speed)
+    if (this.vx > -this.speed) {
+        console.log("ENTRO")
+        this.vx--;
     }
 }
-Player.prototype.receiveDamage = function(damage){
-    this.health = this.health - damage;
-}
-Player.prototype.movement = function(){
 
-}
-Elements.prototype = Object.create(Player.prototype);
-Elements.prototype.constructor = Elements;
-
-//Función constructora de obstaculos, NO NECESITAN MOVIMIENTO
-function Obstacule (x, y, height, width, strength) {
-    Elements.call(this, x, y, height, width);
-    this.strength = strength;
+Player.prototype.moveRight = function () {
+    if (this.vx < this.speed) {             
+        this.vx++;         
+     }
 }
 
-Elements.prototype = Object.create(Obstacule.prototype);
-Elements.prototype.constructor = Elements;
+Player.prototype.moveUp = function () {
+    if(!this.jumping){
+        this.jumping = true;
+        this.vy = -this.speed*2;
+       }
+}
 
-//movimietos
-//Colisiones -->
-// Comprobar si esta tocando algun objeto.  ->> Funcion que llamo en un loop
-// que comprueba la posicion que tiene el player y todos los objetos que he creado.
+Player.prototype.move_orders = function () {
+    if(this.orders[0] == true){
+        this.moveLeft()
+    } else if(this.orders[1] == true){
+        this.moveRight()
+    } else if(this.orders[2] == true){
+        this.moveUp()
+    }
+}
