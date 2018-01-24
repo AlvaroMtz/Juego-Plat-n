@@ -1,13 +1,13 @@
-function Obstacule (strength){
-    this.strength = strength;
-    //posicion en x
-    //posicion en y
-    //tamaño de rellenado 
-};
-
-
-
-
-Obstacule.prototype.attack = function () {
-    return this.strength;
+function Obstacule (ctx, canvas){
+    this.x = x,
+    this.y = y,
+    this.height = height,
+    this.width = width,
+    this.ctx = ctx,
+    this.canvas = canvas;
 }
+
+Obstacule.prototype.render
+   
+
+

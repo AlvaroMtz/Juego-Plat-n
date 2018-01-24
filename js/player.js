@@ -1,6 +1,6 @@
 function Player(ctx, canvas){
-    this.x = 20,
-    this.y = 150,   
+    this.x = 50,
+    this.y = 400,   
     this.vy = 0,
     this.vx = 0,
     this.speed = 3, 
@@ -9,7 +9,7 @@ function Player(ctx, canvas){
     this.orders = [false, false, false], // Evaluo las pulsaciones de tecla
                                          // [izq,der,arriba]
     this.friction = 0.8,
-    this.gravity = 0.2;
+    this.gravity = 0.4,
     this.ctx = ctx,
     this.canvas = canvas
 }
@@ -41,9 +41,7 @@ Player.prototype.update = function () {
 }
 
 Player.prototype.moveLeft = function () {
-    console.log(this.vx > -this.speed)
     if (this.vx > -this.speed) {
-        console.log("ENTRO")
         this.vx--;
     }
 }
