@@ -3,7 +3,7 @@ function Player(ctx, canvas){
     this.y = 400,   
     this.vy = 0,
     this.vx = 0,
-    this.speed = 3, 
+    this.speed = 6, 
     this.radius = 5,
     this.color = '#FFcc00',
     this.orders = {
@@ -13,7 +13,7 @@ function Player(ctx, canvas){
         right: false
     };
     this.friction = 0.8,
-    this.gravity = 0.4,
+    this.gravity = 0.5,
     this.ctx = ctx,
     this.canvas = canvas
 }

@@ -3,14 +3,18 @@ var ctx = canvas.getContext('2d');
 
 
 var player = new Player(ctx, canvas);
+var lava = new Lava(ctx, canvas);
 //var obstacule = new Obstacule(ctx, canvas);
 
 function update() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  //ctx.clearRect(0, 0, canvas.width, canvas.height);
   player.update();
   player.render();
+  //lava.renderMap();
 };
-setInterval(update, 20)
+lava.renderMap();
+setInterval(update, 10)
+
 
 
 function setPlayerKey(keyCode, value) {
