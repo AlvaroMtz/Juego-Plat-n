@@ -6,39 +6,37 @@ var player = new Player(ctx, canvas);
 //var obstacule = new Obstacule(ctx, canvas);
 
 function update() {
-    ctx.clearRect(0,0, canvas.width, canvas.height);
-    player.update();
-    player.render();
-    player.move_orders();
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  player.update();
+  player.render();
 };
 setInterval(update, 20)
 
-document.onkeydown = function(e) {
-switch (e.keyCode) {
+
+function setPlayerKey(keyCode, value) {
+  switch (keyCode) {
     case 38:
-    player.orders[2] = true;
+      player.orders.up = value;
       break;
     case 37:
-    player.orders[0] = true;
+      player.orders.left = value;
       break;
     case 39:
-    player.orders[1] = true;
+      player.orders.right = value;
+      break;
+    case 40:
+      player.orders.down = value;
       break;
   }
 }
-document.onkeyup = function(e) {
-switch (e.keyCode) {
-      case 38:
-      player.orders[2] = false;    
-        break;
-      case 37:
-      player.orders[0] = false;  
-        break;
-      case 39:
-      player.orders[1] = false; 
-        break;
-    }
-  }
+
+document.onkeydown = function (e) {
+  setPlayerKey(e.keyCode, true)
+}
+
+document.onkeyup = function (e) {
+  setPlayerKey(e.keyCode, false);
+}
 
 
 

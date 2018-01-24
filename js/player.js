@@ -6,8 +6,12 @@ function Player(ctx, canvas){
     this.speed = 3, 
     this.radius = 5,
     this.color = '#FFcc00',
-    this.orders = [false, false, false], // Evaluo las pulsaciones de tecla
-                                         // [izq,der,arriba]
+    this.orders = {
+        up: false,
+        down: false,
+        left: false,
+        right: false
+    };
     this.friction = 0.8,
     this.gravity = 0.4,
     this.ctx = ctx,
@@ -38,6 +42,7 @@ Player.prototype.update = function () {
         this.y = this.canvas.height - this.radius;
         this.jumping = false;
     }
+    this.move_orders();
 }
 
 Player.prototype.moveLeft = function () {
@@ -60,11 +65,13 @@ Player.prototype.moveUp = function () {
 }
 
 Player.prototype.move_orders = function () {
-    if(this.orders[0] == true){
+    if(this.orders.left == true){
         this.moveLeft()
-    } else if(this.orders[1] == true){
+    }
+    if(this.orders.right == true){
         this.moveRight()
-    } else if(this.orders[2] == true){
+    }
+    if(this.orders.up == true){
         this.moveUp()
     }
 }
