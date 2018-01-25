@@ -8,8 +8,9 @@ var player = new Player(ctx, canvas);
 // var obstacleThree = new Obstacles(520,380, 90, 20);
 // var obstacleFour = new Obstacles(330,320, 90, 20);
 var obstacleBaseOne = new Obstacles (0, 460, 300, 40, '#000000');
-var obstacleBaseTwo = new Obstacles (350, 460, 300, 40);
-var obstacleBaseThree = new Obstacles (780, 460, 300, 40);
+var obstacleBaseTwo = new Obstacles (350, 460, 300, 40, '#000000');
+var obstacleBaseThree = new Obstacles (780, 460, 300, 40, '#000000');
+var obstacleAirOne = new Obstacles (700, 320, 200, 20, '#000000')
 
 function update() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -22,6 +23,7 @@ function update() {
   obstacleBaseOne.draw();
   obstacleBaseTwo.draw();
   obstacleBaseThree.draw();
+  obstacleAirOne.draw();
  
 };
 

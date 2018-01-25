@@ -4,7 +4,7 @@ function Player(ctx, canvas){
     this.vy = 0,
     this.vx = 0,
     this.speed = 6, 
-    this.radius = 5,
+    this.radius = 20,
     this.color = '#FFcc00',
     this.orders = {
         up: false,
