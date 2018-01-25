@@ -1,3 +1,9 @@
+.titulo{
+    display: block;
+    margin: auto;
+    align: center;
+}
+
 .container_one{
     margin-right: 10px;
     margin-left: 10px;
@@ -7,4 +13,5 @@ canvas{
         margin: auto;
         align: center; 
         border: 1px solid #000;
+        /* background-color: #ff9500; */
     }
