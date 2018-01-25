@@ -3,28 +3,32 @@ var ctx = canvas.getContext('2d');
 
 
 var player = new Player(ctx, canvas);
-// var obstacleOne = new Obstacles(250,450, 90, 20);
-// var obstacleTwo = new Obstacles(370,420, 90, 20);
-// var obstacleThree = new Obstacles(520,380, 90, 20);
-// var obstacleFour = new Obstacles(330,320, 90, 20);
 var obstacleBaseOne = new Obstacles (0, 460, 300, 40, '#000000');
 var obstacleBaseTwo = new Obstacles (350, 460, 300, 40, '#000000');
 var obstacleBaseThree = new Obstacles (780, 460, 300, 40, '#000000');
-var obstacleAirOne = new Obstacles (700, 320, 200, 20, '#000000')
+var obstacleAirOne = new Obstacles (690, 300, 200, 20, '#000000')
+var obstacleAirTunelOne = new Obstacles (220, 300, 400, 30, '#000000')
+var obstacleAirTunelTwo = new Obstacles (250, 220, 300, 30, '#000000')
+var obstacleAirTwo = new Obstacles (0, 300, 20, 10, '#000000')
+var obstacleAirThree = new Obstacles (0, 200, 20, 10, '#000000')
+var obstacleAirFour = new Obstacles (0, 90, 20, 10, '#000000')
+var obstacleAirFive = new Obstacles (530, 130, 20, 90, '#000000')
+
 
 function update() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   player.update();
   player.render();
-  // obstacleOne.draw();
-  // obstacleTwo.draw();
-  // obstacleThree.draw();
-  // obstacleFour.draw();
   obstacleBaseOne.draw();
   obstacleBaseTwo.draw();
   obstacleBaseThree.draw();
   obstacleAirOne.draw();
- 
+  obstacleAirTunelOne.draw();
+  obstacleAirTunelTwo.draw();
+  obstacleAirTwo.draw();
+  obstacleAirThree.draw();
+  obstacleAirFour.draw();
+  obstacleAirFive.draw();
 };
 
 setInterval(update, 10)
